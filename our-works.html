@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="works-header">Наши работы</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1976d2;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      color: #1976d2;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .back-btn:hover { 
+      background-color: #bebebe;
+      
+    }
+
+    .lang-select {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      padding: 4px 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Контейнер */
+    .wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1600px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .card-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      color: #003366;
+      margin: 8px 0 14px 0;
+      text-align: center;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.5;
+      margin: 0 0 10px 0;
+      text-align: justify;
+    }
+
+    /* Для мобильных */
+    @media (max-width: 992px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <a href="index.html" class="back-btn" id="backBtn">⬅ Назад</a>
+  <span id="worksHeader">Наши работы</span>
+  <select id="language" class="lang-select">
+    <option value="ru">RU</option>
+    <option value="en">EN</option>
+    <option value="uz">UZ</option>
+  </select>
+</header>
+
+<div class="wrapper">
+  <div class="container">
+    <!-- Boeing 777F -->
+    <div class="card">
+      <img src="images/cargo-1.jpg" alt="Boeing 777F">
+      <div class="card-content">
+        <h2 id="work1-title">Boeing 777F (Freighter)</h2>
+        <p id="work1-sub">📦 Промышленное оборудование, электроника, текстиль, запчасти для авто</p>
+        <p id="work1-text">👉 В грузовых версиях Boeing 777F перевозятся генеральные грузы...</p>
+      </div>
+    </div>
+
+    <!-- Airbus A330-200F -->
+    <div class="card">
+      <img src="images/cargo-2.jpg" alt="Airbus A330-200F">
+      <div class="card-content">
+        <h2 id="work2-title">Airbus A330-200F</h2>
+        <p id="work2-sub">📦 Опасные материалы (литиевые батареи, химикаты, жидкости, реагенты)</p>
+        <p id="work2-text">👉 На борту Airbus A330F выполняется транспортировка грузов...</p>
+      </div>
+    </div>
+
+    <!-- Boeing 767-300F -->
+    <div class="card">
+      <img src="images/cargo-3.jpg" alt="Boeing 767-300F">
+      <div class="card-content">
+        <h2 id="work3-title">Boeing 767-300F</h2>
+        <p id="work3-sub">📦 Фармацевтическая продукция, вакцины, продукты питания</p>
+        <p id="work3-text">👉 Boeing 767F используется для перевозки температурно-чувствительных грузов...</p>
+      </div>
+    </div>
+
+    <!-- Boeing 767F Crēdo Xtreme -->
+    <div class="card">
+      <img src="images/cargo-4.jpg" alt="Boeing 767F Crēdo Xtreme">
+      <div class="card-content">
+        <h2 id="work4-title">Boeing 767-300F Crēdo Xtreme</h2>
+        <p id="work4-sub">📦 Crēdo Xtreme с вакцинами и медикаментами</p>
+        <p id="work4-text">👉 Boeing 767F используется для перевозки термоконтейнеров Crēdo Xtreme...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="lang.js"></script>
+
+</body>
+</html>
