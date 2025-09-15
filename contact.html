@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Запрос ставки</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1976d2;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      color: #1976d2;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .back-btn:hover { background-color: #e0e0e0; }
+
+    .lang-select {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      padding: 4px 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 70px; /* фиксированная ширина */
+    }
+
+    .form-section {
+      max-width: 700px;
+      width: 90%;
+      margin: 40px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1976d2;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    input, select {
+      padding: 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: 0.2s;
+      width: 100%;
+    }
+    input:focus, select:focus {
+      border-color: #1976d2;
+      outline: none;
+      box-shadow: 0 0 6px rgba(25,118,210,0.3);
+    }
+
+    button {
+      grid-column: span 2;
+      background: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #43a047;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .status {
+      grid-column: span 2;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      header { font-size: 20px; padding: 16px; }
+      .back-btn { font-size: 13px; padding: 7px 12px; }
+      .lang-select { font-size: 13px; }
+      .form-section { padding: 25px; margin-top: 30px; }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      header { font-size: 18px; padding: 14px; }
+      .back-btn { font-size: 12px; padding: 6px 10px; left: 10px; }
+      .lang-select { font-size: 12px; right: 10px; width: 65px; }
+      h2 { font-size: 20px; margin-bottom: 20px; }
+      form { grid-template-columns: 1fr; }
+      button, .status { grid-column: span 1; }
+    }
+
+    /* Very small devices */
+    @media (max-width: 400px) {
+      header { font-size: 16px; padding: 12px; }
+      h2 { font-size: 18px; }
+      input, select { font-size: 13px; padding: 10px; }
+      button { font-size: 14px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-btn" id="backBtn">⬅ Назад</a>
+    <span id="contactHeader">Запрос ставки</span>
+    <select id="language" class="lang-select">
+      <option value="ru">RU</option>
+      <option value="en">EN</option>
+      <option value="uz">UZ</option>
+    </select>
+  </header>
+
+  <section class="form-section">
+    <h2 id="contactHeader">Запросить ставку</h2>
+    <form id="rate-form">
+      <input type="text" name="name" id="formName" placeholder="Имя *" required>
+      <input type="number" name="phone" id="formPhone" placeholder="Телефон *" required>
+
+      <input type="text" name="from" id="formFrom" placeholder="Откуда *" required>
+      <input type="text" name="to" id="formTo" placeholder="Куда *" required>
+
+      <select name="transport" id="formTransport" required>
+        <option value="" id="chooseTransport">Выберите транспорт *</option>
+        <option value="avia">✈ Авиа</option>
+        <option value="auto">🚚 Авто</option>
+        <option value="train">🚆 Ж/д</option>
+        <option value="sea">🚢 Морской</option>
+      </select>
+
+      <select name="cargo_type" id="formCargo" required>
+        <option value="" id="cargoType">Тип груза *</option>
+        <option value="general">📦 Общий груз</option>
+        <option value="dangerous">⚠ Опасный груз</option>
+        <option value="fragile">🔹 Хрупкий груз</option>
+        <option value="liquid">💧 Жидкости</option>
+        <option value="food">🥫 Продукты питания</option>
+        <option value="other">➕ Другое</option>
+      </select>
+
+      <input type="text" name="weight" id="formWeight" placeholder="Вес (кг)" required>
+      <input type="text" name="size" id="formSize" placeholder="Размер (см)">
+      <input type="text" name="product_name" id="formProduct" placeholder="Имя товара" required>
+      <input type="email" name="email" id="formEmail" placeholder="Email для ответа *" required>
+
+      <button type="submit" id="formSubmit">ЗАПРОСИТЬ СТАВКУ</button>
+      <div class="status" id="status"></div>
+    </form>
+  </section>
+
+
+  <!-- EmailJS и скрипт -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="contact.js"></script>
+  <script src="lang.js"></script>
+
+
+  </script>
+</body>
+</html>

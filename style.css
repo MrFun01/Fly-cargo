@@ -1,0 +1,121 @@
+Общие стили
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+}
+
+/* Заголовки */
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin: 40px 0 20px;
+  color: #222;
+  animation: fadeDown 0.8s ease-out;
+}
+
+/* Контейнер кнопки */
+.back-btn-container {
+  text-align: center;
+  margin: 30px 0 50px;
+}
+
+/* Кнопка */
+.back-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #0078D7;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.back-btn:hover {
+  background: #005a9e;
+  transform: translateY(-2px);
+}
+
+/* Карточки (самолёты, услуги и т.д.) */
+.card, .plane-card, .service-card, .direction-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  margin: 15px;
+}
+.card:hover, .plane-card:hover, .service-card:hover, .direction-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.card img, .plane-card img, .service-card img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Контакты */
+.contacts-info {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.contacts-info h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #0078D7;
+}
+.contacts-info p {
+  font-size: 18px;
+  margin: 8px 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Анимации */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Секция анимации самолёта ===== */
+.sky {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(to top, #e6f7ff, #ffffff);
+}
+
+.plane {
+  position: absolute;
+  bottom: 60px;
+  left: -200px;
+  width: 120px;
+  animation: fly 12s linear infinite;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateX(0) translateY(0) rotate(5deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(50vw) translateY(-20px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(110vw) translateY(-40px) rotate(10deg);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Информация о самолетах</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: #1976d2;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      color: #1976d2;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .back-btn:hover { 
+      background-color: #bebebe;
+    }
+
+    .lang-select {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      padding: 4px 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      color: #003366;
+      margin: 0 0 14px;
+      text-align: center;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .card ul li {
+      margin: 6px 0;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .card ul li:last-child { border-bottom: none; }
+
+    /* Tablet */
+    @media (max-width: 1000px) {
+      header {
+        font-size: 20px;
+        padding: 16px;
+      }
+      .back-btn {
+        font-size: 13px;
+        padding: 7px 14px;
+      }
+      .lang-select {
+        font-size: 13px;
+        padding: 3px 5px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 20px 12px;
+      }
+      header {
+        font-size: 18px;
+        padding: 14px;
+      }
+      .card h2 {
+        font-size: 16px;
+        min-height: auto;
+      }
+      .card img {
+        height: 160px;
+      }
+      .card ul { font-size: 13px; }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+      header {
+        font-size: 16px;
+      }
+      .back-btn {
+        left: 10px;
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+      .lang-select {
+        right: 10px;
+        font-size: 12px;
+      }
+      .card img {
+        height: 140px;
+      }
+      .card-content {
+        padding: 12px;
+      }
+      .card h2 { font-size: 15px; }
+      .card ul { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-btn" id="backBtn">⬅ Назад</a>
+  <span id="planesHeader">Информация о самолетах</span>
+  <select id="language" class="lang-select">
+    <option value="ru">RU</option>
+    <option value="en">EN</option>
+    <option value="uz">UZ</option>
+  </select>
+</header>
+
+<div class="container">
+  <!-- Boeing 767-300 BCF -->
+  <div class="card">
+    <img src="images/BOEING 767-300 BCF.jpg" alt="BOEING 767-300 BCF">
+    <div class="card-content">
+      <h2>BOEING 767-300 BCF</h2>
+      <ul>
+        <li id="plane1-crew"><b>Экипаж:</b> 2–6 человек</li>
+        <li id="plane1-mass"><b>Максимальная взлетная масса:</b> 184 249 кг</li>
+        <li id="plane1-payload"><b>Полезная нагрузка:</b> до 56 000 кг</li>
+        <li id="plane1-volume"><b>Объем грузового отсека:</b> 400 м³</li>
+        <li id="plane1-range"><b>Дальность полета:</b> до 11 070 км</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Boeing 757-300 -->
+  <div class="card">
+    <img src="images/BOEING 757-300.png" alt="BOEING 757-300">
+    <div class="card-content">
+      <h2>BOEING 757-300</h2>
+      <ul>
+        <li id="plane2-crew"><b>Экипаж:</b> 2–4 пилота</li>
+        <li id="plane2-staff"><b>Бортпроводники:</b> 5–7</li>
+        <li id="plane2-load"><b>Грузоподъемность:</b> 5 000 кг</li>
+        <li id="plane2-mass"><b>Максимальная взлетная масса:</b> 123 830 кг</li>
+        <li id="plane2-seats"><b>Всего мест:</b> 225 (эконом — 203, бизнес — 22)</li>
+        <li id="plane2-pitch"><b>Шаг кресел:</b> Эконом — 32", Бизнес — 40"</li>
+        <li id="plane2-screen"><b>Индивидуальные экраны:</b> Да</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Airbus A330-200F -->
+  <div class="card">
+    <img src="images/AIRBUS A330-200F.png" alt="AIRBUS A330-200F">
+    <div class="card-content">
+      <h2>AIRBUS A330-200F</h2>
+      <ul>
+        <li id="plane3-crew"><b>Экипаж:</b> 2 пилота</li>
+        <li id="plane3-mass"><b>Максимальная взлетная масса:</b> 233 000 кг</li>
+        <li id="plane3-payload"><b>Полезная нагрузка:</b> до 50 000 кг</li>
+        <li id="plane3-volume"><b>Объем грузового отсека:</b> 475 м³</li>
+        <li id="plane3-range"><b>Дальность полета:</b> до 7 400 км</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="lang.js"></script>
+</body>
+</html>
